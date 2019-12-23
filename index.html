@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title></title>
+</head>
+
+<body>
+  <!-- Load the application -->
+  <script src="/dist/common-dependencies.js"></script>
+  <script src="/dist/root-application.js"></script>
+
+  <!-- Static navbar -->
+  <style>
+    body{
+      padding: 0;
+      margin:0;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #111D4A;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      width: 100%;
+      height: 75px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar ul {
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      height: 100%;
+    }
+    
+    .navbar li {
+      padding-right: 24px;
+      height: 100%;
+    }
+    
+    .navbar li:hover {
+      opacity: 0.8;
+    }
+    
+    .navbar a {
+      text-decoration: none;
+      color: white;
+    }
+    #container{
+      margin-top: 100px;
+    }
+  </style>
+  <div class="navbar">
+    <ul>
+      <a onclick="singleSpaNavigate('/react')">
+        <li>
+          React App
+        </li>
+      </a>
+      <a onclick="singleSpaNavigate('/angular')">
+        <li>
+          Angular App
+        </li>
+      </a>
+      <a onclick="singleSpaNavigate('/vue')">
+        <li>
+          Vue App
+        </li>
+      </a>
+    </ul>
+  </div>
+  <div id="container">
+    <div id="react-app"></div>
+    <div id="vue-app"></div>
+    <div id="angular-app"></div>
+  </div>
+</body>
+
+</html>

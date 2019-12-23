@@ -1,0 +1,40 @@
+.react-layout{
+  display: flex;
+  flex-wrap: wrap;
+}
+.react-app-nav{
+  margin:0;
+  padding:0;
+}
+.react-app-nav ul {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  float: left;
+  width: 100vw;
+  position: relative;
+  background-color: #393D49;
+  color: #fff;
+  box-sizing: border-box;
+}
+.react-app-nav ul li{
+  width: 100px;
+  display: block;
+  line-height: 45px;
+  position: relative;
+}
+.react-app-nav ul li a {
+  position: relative;
+  height: 45px;
+  line-height: 45px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  padding: 0 20px;
+  color: rgba(255,255,255,.7);
+  transition: all .3s;
+  white-space: nowrap;
+}
+.react-app-view{
+  flex: 1 auto;
+}
