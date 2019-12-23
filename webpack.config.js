@@ -7,11 +7,11 @@ const ProcessBar = require('webpackbar')
 const IS_PROD = process.argv.some(command => ~command.indexOf('production'))
 
 module.exports = {
-  mode: IS_PROD? 'production' : 'development',
+  mode: IS_PROD ? 'production' : 'development',
   devtool: IS_PROD ? 'none' : 'eval-source-map',
   entry: {
     'baseApplication': 'src/baseApplication/index.js',
-      // 只需要单一版本的情况则把它放在共同的依赖关系中
+    // 只需要单一版本的情况则把它放在共同的依赖关系中
     'common-dependencies': [
       'core-js/client/shim.min.js',
       '@angular/common',
@@ -32,8 +32,8 @@ module.exports = {
   },
   output: {
     publicPath: '/dist/',
-    chunkFilename:'[name].bundle.js',
-    filename: '[name].bundle.js',
+    chunkFilename: '[name].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -46,9 +46,11 @@ module.exports = {
         test: /\.tsx?$/,
         loader: 'ts-loader',
       },
-      { 
+      {
         test: /[\/\\]@angular[\/\\].+\.js$/,
-        parser: { system: true }
+        parser: {
+          system: true
+        }
       },
       {
         test: /\.vue$/,
@@ -90,7 +92,7 @@ module.exports = {
       __dirname,
       'node_modules',
     ],
-    alias:{
+    alias: {
       "@Vue": path.resolve('src/vue'),
       "@Ng": path.resolve('src/angular'),
       "@React": path.resolve('src/react'),
@@ -100,7 +102,7 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      name: 'common-dependencies.js', // 将依赖分块
+      name: 'common-dependencies', // 将依赖分块
     },
   },
   plugins: [
@@ -112,12 +114,10 @@ module.exports = {
     ),
     new ProcessBar({
       name: require('./package.json').name,
-      profile:true
+      profile: true
     })
   ],
-  
-  devtool: 'source-map',
-  externals: ['.ts','.js','.vue','.mjs', '.svelte'],
+  externals: ['.ts', '.js', '.vue', '.mjs', '.svelte'],
   devServer: {
     historyApiFallback: true
   }
