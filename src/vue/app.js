@@ -1,5 +1,4 @@
 import Vue from 'vue/dist/vue.min.js';
-import App from './index.vue';
 import router from './router';
 import singleSpaVue from 'single-spa-vue';
 import Loading from './Loading.vue'
@@ -14,9 +13,6 @@ const vueLifecycles = singleSpaVue({
         <router-view></router-view>        
       </div>
     `,
-    components:{
-      App
-    },
     loadRootComponent: Loading
   },
 });

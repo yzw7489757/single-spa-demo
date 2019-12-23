@@ -4,7 +4,7 @@
   "description": "single-spa-demo",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "webpack --config webpack.config.js -p"
+    "build": "webpack --config webpack.config.js --model=production"
   },
   "keywords": [
     "micro-frontend",
@@ -32,7 +32,8 @@
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "webpackbar": "^4.0.0"
   },
   "dependencies": {
     "@angular/common": "^4.4.7",

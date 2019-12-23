@@ -3,7 +3,12 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const ProcessBar = require('webpackbar')
+const IS_PROD = process.argv.some(command => ~command.indexOf('production'))
+
 module.exports = {
+  mode: IS_PROD? 'production' : 'development',
+  devtool: IS_PROD ? 'none' : 'eval-source-map',
   entry: {
     'baseApplication': 'src/baseApplication/index.js',
       // 只需要单一版本的情况则把它放在共同的依赖关系中
@@ -17,14 +22,18 @@ module.exports = {
       'reflect-metadata',
       'react',
       'react-dom',
+      'react-router',
+      'react-router-dom',
       "vue",
       "vue-router",
-      "svelte"
+      "svelte",
+      "svelte-routing"
     ],
   },
   output: {
     publicPath: '/dist/',
-    filename: '[name].js',
+    chunkFilename:'[name].bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -91,9 +100,8 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      name: 'common-dependencies.js',
+      name: 'common-dependencies.js', // 将依赖分块
     },
-    
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -101,7 +109,11 @@ module.exports = {
     new ContextReplacementPlugin(
       /(.+)?angular(\\|\/)core(.+)?/,
       path.resolve(__dirname, '../src')
-    )
+    ),
+    new ProcessBar({
+      name: require('./package.json').name,
+      profile:true
+    })
   ],
   
   devtool: 'source-map',

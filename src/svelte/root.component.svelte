@@ -27,8 +27,6 @@
       <Route path="/" component={Home} />
     </div>
   </Router>
-
-
 <style>
 @import '/assets/styles/public.css';
 </style>

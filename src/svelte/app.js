@@ -1,5 +1,5 @@
 import singleSpaSvelte from 'single-spa-svelte';
-import AppComponent from './app.svelte';
+import AppComponent from './root.component.svelte';
 
 const svelteLifecycles = singleSpaSvelte({
   component: AppComponent,

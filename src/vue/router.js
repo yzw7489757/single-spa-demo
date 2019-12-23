@@ -2,7 +2,7 @@ import Vue from 'vue/dist/vue.min.js';
 import VueRouter from 'vue-router'
 import About from '@Vue/routes/About.vue';
 import TodoList from '@Vue/routes/TodoList.vue';
-import App from '@Vue/index.vue';
+import App from '@Vue/root.component.vue';
 
 Vue.use(VueRouter)
 const router = new VueRouter({
