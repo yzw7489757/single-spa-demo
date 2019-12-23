@@ -53,6 +53,16 @@ module.exports = {
         ]
       },
       {
+        test: /\.(html|svelte)$/,
+        include: path.resolve(__dirname, 'src/svelte'),
+        use: {
+          loader: 'svelte-loader',
+          options: {
+            hotReload: true
+          }
+        }
+      },
+      {
         test: /\.css$/,
         exclude: path.resolve(__dirname, 'src/vue'),
         use: [
@@ -74,7 +84,9 @@ module.exports = {
       "@Vue": path.resolve(__dirname + 'src/vue'),
       "@Ng": path.resolve(__dirname + 'src/angular'),
       "@React": path.resolve(__dirname + 'src/react'),
-    }
+      svelte: path.resolve('node_modules', 'svelte'),
+    },
+    mainFields: ['svelte', 'browser', 'module', 'main']
   },
   optimization: {
     splitChunks: {
@@ -92,7 +104,7 @@ module.exports = {
   ],
   
   devtool: 'source-map',
-  externals: ['.ts','.js','.vue'],
+  externals: ['.ts','.js','.vue','.mjs', '.svelte'],
   devServer: {
     historyApiFallback: true
   }
