@@ -5,9 +5,9 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   entry: {
-    'root-application': 'src/root-application/root-application.js',
-    'common-dependencies': [
+    'baseApplication': 'src/baseApplication/index.js',
       // 只需要单一版本的情况则把它放在共同的依赖关系中
+    'common-dependencies': [
       'core-js/client/shim.min.js',
       '@angular/common',
       '@angular/compiler',
@@ -19,6 +19,7 @@ module.exports = {
       'react-dom',
       "vue",
       "vue-router",
+      "svelte"
     ],
   },
   output: {
@@ -28,7 +29,7 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
         loader: 'babel-loader',
       },
@@ -54,7 +55,7 @@ module.exports = {
       },
       {
         test: /\.(html|svelte)$/,
-        include: path.resolve(__dirname, 'src/svelte'),
+        exclude: path.resolve(__dirname, '/index.html'),
         use: {
           loader: 'svelte-loader',
           options: {
@@ -81,9 +82,9 @@ module.exports = {
       'node_modules',
     ],
     alias:{
-      "@Vue": path.resolve(__dirname + 'src/vue'),
-      "@Ng": path.resolve(__dirname + 'src/angular'),
-      "@React": path.resolve(__dirname + 'src/react'),
+      "@Vue": path.resolve('src/vue'),
+      "@Ng": path.resolve('src/angular'),
+      "@React": path.resolve('src/react'),
       svelte: path.resolve('node_modules', 'svelte'),
     },
     mainFields: ['svelte', 'browser', 'module', 'main']

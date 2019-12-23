@@ -1,15 +1,28 @@
 import {Component} from '@angular/core';
+import '../../assets/styles/public.css';
 
 @Component({
   selector: 'angularApp',
   template: `
-    <h1>
-      Current is Angular-app.
-    </h1>
-    <a [routerLink]="['/subroute1']" routerLinkActive="active">Angular route 1</a>
-    <a [routerLink]="['/subroute2']" routerLinkActive="active">Angular route 2</a>
-
-    <router-outlet></router-outlet>
+    <nav class="app-nav">
+      <ul class="nav-list">
+        <li>
+          <a [routerLink]="['']" routerLinkActive="active">Home</a>
+        </li>
+        <li>
+          <a [routerLink]="['/about']" routerLinkActive="active">About</a>
+        </li>
+        <li>
+          <a [routerLink]="['/todoList']" routerLinkActive="active">Todo List</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="app-box">
+      <h1>
+        Current is Angular-app.
+      </h1>
+      <router-outlet></router-outlet> 
+    </div>
   `,
 })
 export default class AppComponent {

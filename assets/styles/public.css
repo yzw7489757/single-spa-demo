@@ -1,0 +1,26 @@
+.app-nav{
+  overflow: hidden;
+  position: fixed;
+  height: calc(100vh - 75px);
+  background: #393D49 ;
+}
+.nav-list{
+  padding: 10px 20px;
+  width: 200px;
+  box-sizing: border-box;
+  list-style: none;
+}
+.nav-list li,.nav-list a{
+  line-height: 45px;
+  color: #fff;
+}
+.app-box{
+  width: 100%;
+  margin-left: 200px;
+  overflow: hidden;
+}
+
+a,
+button {
+  transition: color 0.3s ease;
+}

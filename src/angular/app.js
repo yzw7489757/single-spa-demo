@@ -7,7 +7,7 @@ import mainModule from './main-module.ts';
 import { Router } from '@angular/router';
 
 const ngLifecycles = singleSpaAngular({
-  domElementGetter,
+  domElementGetter:()=>document.getElementById('angular-app'),
   mainModule,
   angularPlatform: platformBrowserDynamic(),
   template: `<angularApp />`,
@@ -16,17 +16,16 @@ const ngLifecycles = singleSpaAngular({
 })
 
 export function bootstrap(props) {
+  console.log('angular-app is bootstrap')
   return ngLifecycles.bootstrap(props);
 }
 
 export function mount(props) {
+  console.log('angular-app is Mounted')
   return ngLifecycles.mount(props).then(val => {});
 }
 
 export function unmount(props) {
+  console.log('angular-app is unMounted')
   return ngLifecycles.unmount(props);
-}
-
-function domElementGetter() {
-  return document.getElementById('angular-app');
 }

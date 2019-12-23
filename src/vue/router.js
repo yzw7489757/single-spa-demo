@@ -1,24 +1,25 @@
 import Vue from 'vue/dist/vue.min.js';
 import VueRouter from 'vue-router'
-import ComponentA from './router-a-component.vue';
-import ComponentB from './router-b-component.vue';
-import App from './index.vue';
+import About from '@Vue/routes/About.vue';
+import TodoList from '@Vue/routes/TodoList.vue';
+import App from '@Vue/index.vue';
 
 Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
+  base:'/vue',
   routes: [
     {
-      path:'/vue',
+      path:'/',
       component:App,
       children:[
         {
-          path: 'vueRouterA',
-          component: ComponentA
+          path: 'about',
+          component: About
         },
         {
-          path: 'vueRouterB',
-          component: ComponentB
+          path: 'todoList',
+          component: TodoList
         },
       ]
     }

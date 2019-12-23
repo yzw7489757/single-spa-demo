@@ -1,20 +1,25 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import App from './app-component.ts';
-import {Subroute1} from './subroute1-component.ts';
-import {Subroute2} from './subroute2-component.ts';
+import App from '@Ng/app-component.ts';
+import {About} from '@Ng/routes/About.ts';
+import {Home} from '@Ng/routes/Home.ts';
+import {TodoList} from '@Ng/routes/TodoList.ts';
 import {enableProdMode} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {APP_BASE_HREF} from "@angular/common";
 
 const appRoutes: Routes = [
   {
-    path: 'subroute1',
-    component: Subroute1
+    path: '',
+    component: Home
   },
   {
-    path: 'subroute2',
-    component: Subroute2
+    path: 'about',
+    component: About
+  },
+  {
+    path: 'todoList',
+    component: TodoList
   },
 ];
 
@@ -28,8 +33,9 @@ enableProdMode();
   providers: [{provide: APP_BASE_HREF, useValue: '/angular/'}],
   declarations: [
     App,
-    Subroute1,
-    Subroute2,
+    Home,
+    About,
+    TodoList
   ],
   bootstrap: [App]
 })

@@ -1,11 +1,19 @@
 import singleSpaSvelte from 'single-spa-svelte';
-import AppComponent from './app-component.svelte';
+import AppComponent from './app.svelte';
 
 const svelteLifecycles = singleSpaSvelte({
   component: AppComponent,
   domElementGetter: () => document.getElementById('svelte-app'),
-  data: { someData: 'data' }
 });
-export const bootstrap = svelteLifecycles.bootstrap;
-export const mount = svelteLifecycles.mount;
-export const unmount = svelteLifecycles.unmount;
+export const bootstrap = (props)=> {
+  console.log('svelte-app is bootstrap')
+  return svelteLifecycles.bootstrap(props);
+}
+export const mount = (props)=> {
+  console.log('svelte-app is Mounted')
+  return svelteLifecycles.mount(props);
+}
+export const unmount = (props)=> {
+  console.log('svelte-app is unMounted')
+  return svelteLifecycles.unmount(props);
+}

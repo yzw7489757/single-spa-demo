@@ -3,9 +3,9 @@ import {Component} from '@angular/core';
 @Component({
   template: `
     <div>
-      Subroute 1 is working!
+      <h1>About Page!</h1>
     </div>
   `,
 })
-export class Subroute1 {
+export class About {
 }

@@ -8,13 +8,14 @@
 </head>
 <body>
   <script src="/dist/common-dependencies.js"></script>
-  <script src="/dist/root-application.js"></script>
+  <script src="/dist/baseApplication.js"></script>
   <style>
-    body{
-      padding: 0;
+    *{
+      padding:0;
       margin:0;
     }
     .navbar {
+      padding:0px  20px;
       position: fixed;
       top: 0;
       left: 0;
@@ -26,6 +27,7 @@
       height: 75px;
       display: flex;
       align-items: center;
+      z-index: 1;
     }
     
     .navbar ul {
@@ -49,7 +51,7 @@
       color: white;
     }
     #container{
-      margin-top: 100px;
+      margin-top: 75px;
     }
   </style>
   <div class="navbar">
@@ -57,11 +59,6 @@
       <a onclick="singleSpaNavigate('/react')">
         <li>
           React App
-        </li>
-      </a>
-      <a onclick="singleSpaNavigate('/angular')">
-        <li>
-          Angular App
         </li>
       </a>
       <a onclick="singleSpaNavigate('/vue')">
@@ -72,6 +69,11 @@
       <a onclick="singleSpaNavigate('/svelte')">
         <li>
           Svelte App
+        </li>
+      </a>
+      <a onclick="singleSpaNavigate('/angular')">
+        <li>
+          Angular App
         </li>
       </a>
     </ul>
