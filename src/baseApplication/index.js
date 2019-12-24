@@ -14,7 +14,6 @@ setDefaultMountedApp('/react');
 
 start();
 
-
 function setDefaultMountedApp(path) {
   window.addEventListener(`single-spa:no-app-change`, () => {
     const activedApps = getMountedApps()

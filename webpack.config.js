@@ -1,14 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const ProcessBar = require('webpackbar')
+const HTMLPlugin = require('html-webpack-plugin')
+
 const IS_PROD = process.argv.some(command => ~command.indexOf('production'))
 
+const resolve = (filePath) => path.resolve(filePath)
 module.exports = {
   mode: IS_PROD ? 'production' : 'development',
-  devtool: IS_PROD ? 'none' : 'eval-source-map',
+  devtool: IS_PROD ? 'none' : 'source-map',
   entry: {
     'baseApplication': 'src/baseApplication/index.js',
     // 只需要单一版本的情况则把它放在共同的依赖关系中
@@ -20,14 +23,11 @@ module.exports = {
       '@angular/platform-browser-dynamic',
       '@angular/router',
       'reflect-metadata',
-      'react',
-      'react-dom',
-      'react-router',
-      'react-router-dom',
       "vue",
       "vue-router",
       "svelte",
-      "svelte-routing"
+      "svelte-routing",
+      "react", "react-dom", "react-router", "react-router-dom"
     ],
   },
   output: {
@@ -66,7 +66,7 @@ module.exports = {
       },
       {
         test: /\.(html|svelte)$/,
-        exclude: path.resolve(__dirname, '/index.html'),
+        exclude: path.resolve('index.html'),
         use: {
           loader: 'svelte-loader',
           options: {
@@ -102,11 +102,18 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      name: 'common-dependencies', // 将依赖分块
+      name: 'common-dependencies.js', // 将依赖分块
+      // cacheGroups: {
+      //   vendors: {
+      //     chunks: 'async', // 这里是我们修改的地方，async|initial|all 
+      //     test: /[\\/]node_modules[\\/]/
+      //   } 
+      // }
     },
   },
+
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    IS_PROD && new CleanWebpackPlugin(['dist']),
     new VueLoaderPlugin(),
     new ContextReplacementPlugin(
       /(.+)?angular(\\|\/)core(.+)?/,
@@ -115,8 +122,12 @@ module.exports = {
     new ProcessBar({
       name: require('./package.json').name,
       profile: true
+    }),
+    new HTMLPlugin({
+      template: path.join(__dirname + '/index.html'),
+      inject: 'body'
     })
-  ],
+  ].filter(Boolean),
   externals: ['.ts', '.js', '.vue', '.mjs', '.svelte'],
   devServer: {
     historyApiFallback: true
