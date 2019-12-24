@@ -16,6 +16,11 @@ const history = createBrowserHistory({
   basename: '/react'
 })
 export default class Root extends React.Component {
+
+  componentDidCatch (err) {
+    console.log(err)
+  }
+  
   render() {
     return (
       <div>

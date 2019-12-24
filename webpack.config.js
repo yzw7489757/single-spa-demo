@@ -5,10 +5,9 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const ProcessBar = require('webpackbar')
 const HTMLPlugin = require('html-webpack-plugin')
-
+const { name, version} = require('./package.json')
 const IS_PROD = process.argv.some(command => ~command.indexOf('production'))
 
-const resolve = (filePath) => path.resolve(filePath)
 module.exports = {
   mode: IS_PROD ? 'production' : 'development',
   devtool: IS_PROD ? 'none' : 'source-map',
@@ -22,17 +21,11 @@ module.exports = {
       '@angular/core',
       '@angular/platform-browser-dynamic',
       '@angular/router',
-      'reflect-metadata',
-      "vue",
-      "vue-router",
-      "svelte",
-      "svelte-routing",
-      "react", "react-dom", "react-router", "react-router-dom"
     ],
   },
   output: {
     publicPath: '/dist/',
-    chunkFilename: '[name].js',
+    chunkFilename: '[name].bundle.js',
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
@@ -102,13 +95,13 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      name: 'common-dependencies.js', // 将依赖分块
-      // cacheGroups: {
-      //   vendors: {
-      //     chunks: 'async', // 这里是我们修改的地方，async|initial|all 
-      //     test: /[\\/]node_modules[\\/]/
-      //   } 
-      // }
+      name: true,
+      cacheGroups: {
+        vendors: {
+          chunks: 'async', // 这里是我们修改的地方，async|initial|all 
+          test: /[\\/]node_modules[\\/]/
+        } 
+      }
     },
   },
 
@@ -120,12 +113,17 @@ module.exports = {
       path.resolve(__dirname, '../src')
     ),
     new ProcessBar({
-      name: require('./package.json').name,
+      name,
       profile: true
     }),
     new HTMLPlugin({
       template: path.join(__dirname + '/index.html'),
       inject: 'body'
+    }),
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(IS_PROD),
+      VERSION: JSON.stringify(version),
+      'process.env.NODE_ENV': JSON.stringify(IS_PROD?"production":"development")
     })
   ].filter(Boolean),
   externals: ['.ts', '.js', '.vue', '.mjs', '.svelte'],

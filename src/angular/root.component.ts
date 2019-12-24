@@ -7,7 +7,7 @@ import '../../assets/styles/public.css';
     <nav class="app-nav">
       <ul class="nav-list">
         <li>
-          <a [routerLink]="['/']" routerLinkActive="active">Home</a>
+          <a [routerLink]="['']" routerLinkActive="active">Home</a>
         </li>
         <li>
           <a [routerLink]="['/about']" routerLinkActive="active">About</a>

@@ -11,8 +11,9 @@ const ngLifecycles = singleSpaAngular({
   mainModule,
   angularPlatform: platformBrowserDynamic(),
   template: `<angularApp />`,
-  Router,
+  Router, 
   ApplicationRef,
+  // NgZone,
 })
 
 export function bootstrap(props) {
@@ -22,7 +23,7 @@ export function bootstrap(props) {
 
 export function mount(props) {
   console.log('angular-app is Mounted')
-  return ngLifecycles.mount(props).then(val => {});
+  return ngLifecycles.mount(props).then(val => { });
 }
 
 export function unmount(props) {

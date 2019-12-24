@@ -30,7 +30,7 @@ enableProdMode();
     BrowserModule,
     RouterModule.forRoot(appRoutes, {}),
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/angular/' }],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/angular' }],
   declarations: [
     App,
     Home,
