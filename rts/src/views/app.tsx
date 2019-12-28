@@ -1,5 +1,5 @@
-import * as React from "node_modules/@types/react";
-import { hot, setConfig } from "node_modules/react-hot-loader";
+import * as React from "react";
+import { hot, setConfig } from "react-hot-loader";
 import * as less from './index.module.less';
 
 setConfig({

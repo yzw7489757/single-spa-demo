@@ -1,6 +1,6 @@
-const HtmlWebpackPlugin = require('node_modules/html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const IS_PROD = process.env.NODE_ENV === 'production';
-const { BundleAnalyzerPlugin } = require('node_modules/webpack-bundle-analyzer/lib');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
 const resolve = dir => path.resolve(__dirname, '../', dir);
 const os = require('os');
@@ -29,7 +29,7 @@ const htmlPlugins = () => {
 
 
 // DLL 获取 deps
-const { dependencies } = require('../package');
+const { dependencies } = require('../package.json');
 const vendors = Object.keys(dependencies);// dll
 const excludeVendors = []; // 不打包进 vendor 的依赖
 

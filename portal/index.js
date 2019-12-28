@@ -14,7 +14,7 @@ const apps = [
   { name: 'vue', url: '/vue', entry: '//localhost:5002/app.js', customProps: {} },
   { name: 'svelte', url: '/svelte', entry: '//localhost:5003/app.js', customProps: {} },
   { name: 'react-ts', url: '/rts', entry: '//localhost:5006/app.js', customProps: {} },
-  { name: 'cra-ts', url: '/crats', entry: '//localhost:5007/static/js/bundle.js', customProps: {} },
+  { name: 'cra-ts', url: '/crats', entry: '//localhost:5007/app.js', customProps: {} },
 ]
 
 async function registerAllApps() {

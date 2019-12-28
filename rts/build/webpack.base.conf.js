@@ -1,7 +1,7 @@
 const {
   CleanWebpackPlugin
-} = require('node_modules/clean-webpack-plugin/dist/clean-webpack-plugin');
-const WebpackBar = require('node_modules/webpackbar/dist/webpackbar');
+} = require('clean-webpack-plugin');
+const WebpackBar = require('webpackbar');
 
 const {
   resolve,
@@ -9,17 +9,17 @@ const {
   IS_PROD,
 } = require('./utils');
 const env = require('./env')
-const WebpackBuildNotifierPlugin = require('node_modules/webpack-build-notifier');
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const path = require('path');
-const webpack = require('node_modules/@types/webpack');
-const HappyPack = require('node_modules/happypack/lib/HappyPlugin');
+const webpack = require('webpack');
+const HappyPack = require('happypack');
 const os = require('os');
-const MiniCssExtractPlugin = require('node_modules/mini-css-extract-plugin/dist/cjs')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const happyThreadPool = HappyPack.ThreadPool({
   size: os.cpus().length
 }); // 启动多线程打包
 
-const { name } = require('../package.json.js')
+const { name } = require('../package.json')
 const combination = process.env.NODE_TYPE  === 'single-spa'
 const lessStyleLoader = IS_PROD ? MiniCssExtractPlugin.loader : "style-loader"
 
@@ -133,9 +133,7 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js','.d.ts', ".json", '.less'],
     alias: {
-      'react-hot-loader': resolve('./node_modules/react-hot-loader'),
       'react-dom': resolve('./node_modules/@hot-loader/react-dom'),
-      'react': resolve('./node_modules/react')
     }
   },
 

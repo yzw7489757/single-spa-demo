@@ -8,21 +8,21 @@
     "build:svelte": "cd ./svelte && npm run build",
     "build:vue": "cd ./vue && npm run build",
     "build:nav": "cd ./nav && npm run build",
-    "build:rts": "cd ./reactTs && npm run build",
+    "build:rts": "cd ./rts && npm run build",
     "build:root": "cd ./portal && npm run build",
-    "install": "npm-run-all install:* --parallel",
+    "install:all": "npm-run-all install:* --parallel",
     "install:react": "cd ./react && npm i",
     "install:vue": "cd ./vue && npm i",
     "install:svelte": "cd ./svelte && npm i",
     "install:nav": "cd ./nav && npm i",
     "install:root": "cd ./portal && npm i",
-    "install:rts": "cd ./reactTs && npm i",
+    "install:rts": "cd ./rts && npm i",
     "start": "npm run start:vue & npm run start:react & npm run start:rts & npm run start:svelte& npm run start:nav & # npm run start:root ",
     "start:react": "cd ./react && npm run dev",
     "start:vue": "cd ./vue && npm run dev",
     "start:svelte": "cd ./svelte && npm run dev",
     "start:nav": "cd ./nav && npm run dev",
-    "start:rts": "cd ./reactTs && npm run dev",
+    "start:rts": "cd ./rts && npm run dev",
     "start:root": "cd ./portal && npm run dev"
   },
   "keywords": [
@@ -34,6 +34,7 @@
   "author": "yzw",
   "license": "MIT",
   "devDependencies": {
+    "@types/single-spa-react": "^2.8.3",
     "npm-run-all": "^4.1.5"
   }
 }

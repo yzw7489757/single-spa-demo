@@ -1,10 +1,10 @@
-const merge = require('node_modules/webpack-merge/lib')
+const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base.conf')
-const AutoDllPlugin = require('node_modules/autodll-webpack-plugin/lib'); // dll动态链接库
-const CompressionWebpackPlugin = require('node_modules/compression-webpack-plugin/dist/cjs'); // gzip压缩
-const MiniCssExtractPlugin = require("node_modules/mini-css-extract-plugin/dist/cjs");
-const UglifyJsPlugin = require('node_modules/uglifyjs-webpack-plugin/dist/cjs')
-const OptimizeCssAssetsPlugin = require('node_modules/optimize-css-assets-webpack-plugin/src')// 用于优化或者压缩CSS资源
+const AutoDllPlugin = require('autodll-webpack-plugin'); // dll动态链接库
+const CompressionWebpackPlugin = require('compression-webpack-plugin'); // gzip压缩
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin/src')// 用于优化或者压缩CSS资源
 const productionGzipExtensions = ['js', 'css']
 
 const {

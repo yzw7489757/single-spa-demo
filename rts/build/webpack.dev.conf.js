@@ -1,5 +1,5 @@
-const merge = require('node_modules/webpack-merge/lib')
-const webpack = require('node_modules/@types/webpack')
+const merge = require('webpack-merge')
+const webpack = require('webpack')
 const baseConfig = require('./webpack.base.conf')
 // const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path')

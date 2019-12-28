@@ -1,8 +1,8 @@
-import * as React from "node_modules/@types/react";
-import * as ReactDOM from "node_modules/@types/react-dom";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import 'assets/styles/index.less'
 import App from "./views/app";
-import singleSpaReact from 'node_modules/single-spa-react/lib/single-spa-react';
+import singleSpaReact from 'single-spa-react';
 
 const reactLifecycles = singleSpaReact({
   React,
