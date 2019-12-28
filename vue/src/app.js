@@ -2,17 +2,14 @@ import Vue from 'vue/dist/vue.min.js';
 import router from './router';
 import singleSpaVue from 'single-spa-vue';
 import Loading from './components/Loading.vue'
+import App from './app.vue';
 
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
     router,
     el: '#vue-app',
-    template: `
-      <div id="vue-app">
-        <router-view></router-view>        
-      </div>
-    `,
+    render: h => h(App),
     loadRootComponent: Loading
   },
 });

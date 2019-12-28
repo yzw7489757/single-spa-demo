@@ -29,12 +29,13 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
+    "antd": "^3.26.4",
     "core-js": "^2.4.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "single-spa": "^4.4.2",
+    "single-spa": "^3.8.1",
     "single-spa-react": "^2.11.0"
   }
 }

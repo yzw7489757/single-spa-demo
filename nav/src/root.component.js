@@ -1,6 +1,8 @@
 import React from 'react';
-import * as singlespa from 'single-spa'
-import './nav.css';
+import {navigateToUrl,start} from 'single-spa'
+import { Layout, Menu,  } from 'antd';
+
+const { Header } = Layout;
 
 export default class Root extends React.Component {
   constructor() {
@@ -9,8 +11,12 @@ export default class Root extends React.Component {
       { title: 'React App', path: '/react' },
       { title: 'Vue App', path: '/vue' },
       { title: 'Svelte App', path: '/svelte' },
-      { title: 'Angular App', path: '/angular' },
+      { title: 'reactTs App', path: '/rts' },
+      { title: 'craTs App', path: '/crats' },
     ]
+  }
+  componentDidMount(){
+    start()
   }
   componentDidCatch(err) {
     console.log(err)
@@ -18,18 +24,20 @@ export default class Root extends React.Component {
 
   generatorRoute = (route) => {
     return (
-      <a key={route.path} onClick={() => singlespa.navigateToUrl(route.path)}>
-        <li>{route.title}</li>
-      </a>
+      <Menu.Item  key={route.path} onClick={() => navigateToUrl(route.path)}>{route.title}</Menu.Item>
     )
   }
   render() {
     return (
-      <nav className="navbar">
-        <ul>
-          {this.routeList.map(this.generatorRoute)}
-        </ul>
-      </nav>
+      <Header>
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          style={{ lineHeight: '64px' }}
+        >
+            {this.routeList.map(this.generatorRoute)}
+        </Menu>
+      </Header>
     );
   }
 }

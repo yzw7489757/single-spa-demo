@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ProcessBar = require('webpackbar')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+// const CleanWebpackPlugin = require('clean-webpack-plugin')
 const {
   name,
   version
@@ -12,7 +12,7 @@ module.exports = {
   mode: IS_PROD ? 'production' : 'development',
   devtool: IS_PROD ? 'none' : 'source-map',
   entry: {
-    'app': './src/app.js',
+    'app': 'src/app.js',
   },
   output: {
     filename: '[name].js',
@@ -31,7 +31,15 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
+          {
+            loader:'css-loader',
+            // options: {
+            //   sourceMap: !IS_PROD,
+            //   modules: {
+            //     localIdentName: '[local]___[hash:base64:5]',
+            //   },
+            // },
+          }
         ]
       },
       {
@@ -39,7 +47,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]',
-          publicPath: '/nav-app/',
+          publicPath: '/',
         }
       },
     ],
@@ -62,7 +70,7 @@ module.exports = {
 
 
   plugins: [
-    IS_PROD && new CleanWebpackPlugin(['dist']),
+    // IS_PROD && new CleanWebpackPlugin(['dist']),
     new ProcessBar({
       name,
       profile: true
@@ -74,6 +82,9 @@ module.exports = {
     })
   ].filter(Boolean),
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   }
 };

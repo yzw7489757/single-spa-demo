@@ -1,13 +1,13 @@
-import Vue from 'vue/dist/vue.min.js';
+import Vue from 'vue';
 import router from './router';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css'
+import App from './app.vue'
+Vue.use(ElementUI);
 
 new Vue({
   router,
-  template: `
-    <div id="vue-app">
-      <router-view></router-view>        
-    </div>
-  `,
+  render: h => h(App),
 }).$mount(appMountDOMGetter())
 
 function appMountDOMGetter() {

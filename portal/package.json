@@ -16,9 +16,11 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.0",
     "html-webpack-plugin": "^4.0.0-beta.4",
     "http-server": "^0.12.0",
     "npm-run-all": "^4.1.5",
+    "style-loader": "^1.1.2",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
@@ -26,9 +28,9 @@
   },
   "dependencies": {
     "core-js": "^2.4.1",
-    "es6-promise": "^4.1.1",
+    "normalize.css": "^8.0.1",
     "single-spa": "^3.8.1",
-    "systemjs": "^6.1.7",
+    "systemjs": "^0.20.19",
     "zone.js": "^0.10.2"
   }
 }

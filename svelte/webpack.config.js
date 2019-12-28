@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ProcessBar = require('webpackbar')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+// const CleanWebpackPlugin = require('clean-webpack-plugin')
 const {
   name,
   version
@@ -40,7 +40,9 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
+          {
+            loader:'css-loader',
+          }
         ]
       },
       {
@@ -79,7 +81,7 @@ module.exports = {
     },
   },
   plugins: [
-    IS_PROD && new CleanWebpackPlugin(['dist']),
+    // IS_PROD && new CleanWebpackPlugin(['dist']),
     new ProcessBar({
       name,
       profile: true
@@ -92,6 +94,9 @@ module.exports = {
   ].filter(Boolean),
   externals: ['.js', '.svelte'],
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   }
 };

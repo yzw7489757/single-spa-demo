@@ -10,7 +10,7 @@ import Home from '@/routes/home.jsx';
 import About from '@/routes/about.jsx';
 import TodoList from '@/routes/todoList.jsx';
 
-import './styles/app-nav.css';
+import styles from './styles/app-nav.css';
 
 const history = createBrowserHistory({
   basename: '/react'
@@ -23,10 +23,10 @@ export default class Root extends React.Component {
   
   render() {
     return (
-      <div>
         <Router
           history={history}
         >
+          <div className="app-container">
             <nav className="app-nav">
               <ul className="nav-list">
                 <li>
@@ -40,6 +40,7 @@ export default class Root extends React.Component {
                 </li>
               </ul>
             </nav>
+            
             <div className="app-box">
               <Switch>
                 <Route path="/about">
@@ -55,8 +56,8 @@ export default class Root extends React.Component {
                 </Route>
               </Switch>
             </div>
+        </div>
         </Router>
-      </div>
     );
   }
 }

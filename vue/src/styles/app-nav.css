@@ -1,27 +1,28 @@
 
 .app-nav{
-  overflow: hidden;
-  position: fixed;
-  top:75px;
-  left:0;
-  bottom:0;
-  height: calc(100vh - 75px);
+  float: left;
+  width: 200px;
+  height: calc(100vh - 64px);
   background: #393D49 ;
 }
 .nav-list{
-  padding: 10px 20px;
   width: 200px;
   box-sizing: border-box;
   list-style: none;
 }
-.nav-list li,.nav-list a{
+.nav-list li{
+  padding: 10px 20px;
+  transition: background-color .3s ease-in;
+}
+.nav-list li:hover{
+  background-color: goldenrod;
+}
+.nav-list a{
   line-height: 45px;
   color: #fff;
 }
 .app-box{
   width: calc(100% - 200px);
-  margin-top:75px;
-  margin-left: 200px;
   overflow: hidden;
 }
 

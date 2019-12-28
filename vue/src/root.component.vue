@@ -31,6 +31,6 @@ name:'app',
 }
 </script>
 
-<style>
+<style scoped>
 @import './styles/app-nav.css';
 </style>

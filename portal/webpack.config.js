@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ProcessBar = require('webpackbar')
 const HTMLPlugin = require('html-webpack-plugin')
 
@@ -24,11 +24,19 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.js$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
         loader: 'babel-loader',
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
+      },
     ],
   },
   node: {
@@ -56,7 +64,7 @@ module.exports = {
   },
 
   plugins: [
-    IS_PROD && new CleanWebpackPlugin(['dist']),
+    // IS_PROD && new CleanWebpackPlugin(['dist']),
     new ProcessBar({
       name,
       profile: true
@@ -100,6 +108,10 @@ module.exports = {
         "/nav-app": {
             target: "http://localhost:5005",
             pathRewrite: {"^/nav-app" : ""}
+        },
+        "/rts": {
+            target: "http://localhost:5006",
+            pathRewrite: {"^/rts" : ""}
         },
     }
   }

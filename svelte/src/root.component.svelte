@@ -28,23 +28,24 @@
   </div>
 </Router>
 
-<style scoped>
+<style>
 .app-nav{
-  overflow: hidden;
-  position: fixed;
-  top:75px;
-  left:0;
-  bottom:0;
-  height: calc(100vh - 75px);
+  width: 200px;
+  float:left;
+  height: calc(100vh - 64px);
   background: #393D49 ;
 }
 .nav-list{
-  padding: 10px 20px;
-  width: 200px;
   box-sizing: border-box;
   list-style: none;
 }
-.nav-list :global(li),
+.nav-list :global(li){
+  padding: 10px 20px;
+  transition: background-color .3s ease-in;
+}
+.nav-list :global(li):hover{
+  background-color: #f5222d;
+}
 .nav-list :global(a) {
   line-height: 45px;
   color: #fff;
@@ -52,7 +53,6 @@
 .app-box{
   width: calc(100% - 200px);
   padding:20px;
-  margin-top:75px;
   margin-left: 200px;
   overflow: hidden;
 }

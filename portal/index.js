@@ -5,27 +5,39 @@ import {
   navigateToUrl,
   getAppNames
 } from 'single-spa';
-console.log(1)
+import SystemJS from 'systemjs/dist/system'
+// import 'normalize.css';
+
 const apps = [
-  { name: 'nav', url: true, entry: '/nav-app/app.js', customProps: {} },
-  { name: 'react', url: '/react', entry: '/react-app/app.js', customProps: {} },
-  { name: 'vue', url: '/vue', entry: '/vue-app/app.js', customProps: {} },
-  { name: 'svelte', url: '/svelte', entry: '/svelte-app/app.js', customProps: {} },
-  { name: 'angular', url: '/angular', entry: '/angular-app/app.js', customProps: {} },
+  { name: 'nav', url: true, entry: '//localhost:5005/app.js', customProps: {} },
+  { name: 'react', url: '/react', entry: '//localhost:5001/app.js', customProps: {} },
+  { name: 'vue', url: '/vue', entry: '//localhost:5002/app.js', customProps: {} },
+  { name: 'svelte', url: '/svelte', entry: '//localhost:5003/app.js', customProps: {} },
+  { name: 'react-ts', url: '/rts', entry: '//localhost:5006/app.js', customProps: {} },
+  { name: 'cra-ts', url: '/crats', entry: '//localhost:5007/static/js/bundle.js', customProps: {} },
 ]
 
-async function initialPage() {
+async function registerAllApps() {
+  // registerApplication('nav', () => SystemJS.import('/nav-app/app.js'), pathPrefix(true), {});
+  // registerApplication('react', () => SystemJS.import('/react-app/app.js'), pathPrefix('/react'), {});
+  // registerApplication('vue', () => SystemJS.import('/vue-app/app.js'), pathPrefix('vue'), {});
+  // registerApplication('svelte', () => SystemJS.import('/svelte-app/app.js'), pathPrefix('/svelte'), {});
+  // registerApplication('react-ts', () => SystemJS.import('/rts/app.js'), pathPrefix('/rts'), {});
   await Promise.all(apps.map(registerApp))
-  await start();
-  // setDefaultMountedApp('/react');
+
+  await setDefaultMountedApp('/react');
+
+  start();
 }
 
-initialPage();
+registerAllApps();
 
 function setDefaultMountedApp(path) {
-  window.addEventListener(`single-spa:no-app-change`, () => {
+  window.addEventListener(`single-spa:no-app-change`, (evt) => {
+    
     const activedApps = getMountedApps()
-    if (activedApps.length === 0) {
+    console.log('activedApps: ', activedApps);
+    if (activedApps.length === 0 ) {
       navigateToUrl(path)
     }
   }, {
@@ -44,7 +56,7 @@ function pathPrefix(prefix) {
     return () => true
   }
   return function (location) {
-    return location.pathname.startsWith(`${prefix}`);
+    return location.pathname.startsWith(prefix);
   }
 }
 
@@ -58,5 +70,5 @@ function pathPrefix(prefix) {
  * @param {*} customProps custom Props
  */
 function registerApp({ name, url, entry, customProps = {} }) {
-  registerApplication(name, () => SystemJS.import(entry), pathPrefix(url), customProps);
+  return registerApplication(name, () => SystemJS.import(entry), pathPrefix(url), customProps);
 }

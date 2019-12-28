@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+// const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ProcessBar = require('webpackbar')
 const {
   name,
@@ -21,7 +21,7 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',
-    library: 'lib-vue-app'
+    library: 'vue'
   },
   module: {
     rules: [{
@@ -37,7 +37,9 @@ module.exports = {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader'
+          {
+            loader:'css-loader',
+          }
         ]
       },
       {
@@ -69,7 +71,7 @@ module.exports = {
 
 
   plugins: [
-    IS_PROD && new CleanWebpackPlugin(['dist']),
+    // IS_PROD && new CleanWebpackPlugin(['dist']),
     new VueLoaderPlugin(),
     new ProcessBar({
       name,
@@ -82,6 +84,9 @@ module.exports = {
     })
   ].filter(Boolean),
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   }
 };

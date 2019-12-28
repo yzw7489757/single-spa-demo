@@ -10,7 +10,6 @@ const reactLifecycles = singleSpaReact({
   domElementGetter: () => domElementGetter('nav-app')
 });
 
-
 export function bootstrap(props) {
   console.log('nav-app is bootstrap')
   return reactLifecycles.bootstrap(props);
