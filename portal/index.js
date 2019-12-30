@@ -6,7 +6,6 @@ import {
   getAppNames
 } from 'single-spa';
 import SystemJS from 'systemjs/dist/system'
-// import 'normalize.css';
 
 const apps = [
   { name: 'nav', url: true, entry: '//localhost:5005/app.js', customProps: {} },
@@ -15,18 +14,12 @@ const apps = [
   { name: 'svelte', url: '/svelte', entry: '//localhost:5003/app.js', customProps: {} },
   { name: 'react-ts', url: '/rts', entry: '//localhost:5006/app.js', customProps: {} },
   { name: 'cra-ts', url: '/crats', entry: '//localhost:5007/app.js', customProps: {} },
+  { name: 'vts', url: '/vts', entry: '//localhost:5008/vts/index.js', customProps: {} },
 ]
 
 async function registerAllApps() {
-  // registerApplication('nav', () => SystemJS.import('/nav-app/app.js'), pathPrefix(true), {});
-  // registerApplication('react', () => SystemJS.import('/react-app/app.js'), pathPrefix('/react'), {});
-  // registerApplication('vue', () => SystemJS.import('/vue-app/app.js'), pathPrefix('vue'), {});
-  // registerApplication('svelte', () => SystemJS.import('/svelte-app/app.js'), pathPrefix('/svelte'), {});
-  // registerApplication('react-ts', () => SystemJS.import('/rts/app.js'), pathPrefix('/rts'), {});
   await Promise.all(apps.map(registerApp))
-
-  await setDefaultMountedApp('/react');
-
+  // await setDefaultMountedApp('/react');
   start();
 }
 

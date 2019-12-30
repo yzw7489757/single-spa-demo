@@ -17,7 +17,7 @@ const vueLifecycles = singleSpaVue({
 function appMountDOMGetter() {
   let el = document.getElementById('vue-app');
   if (!el) {
-      const el = document.createElement('div');
+      el = document.createElement('div');
       el.id = 'vue-app';
       document.body.appendChild(el);
   }

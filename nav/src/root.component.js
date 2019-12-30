@@ -13,6 +13,7 @@ export default class Root extends React.Component {
       { title: 'Svelte App', path: '/svelte' },
       { title: 'reactTs App', path: '/rts' },
       { title: 'craTs App', path: '/crats' },
+      { title: 'vue Ts', path: '/vts' },
     ]
   }
   componentDidMount(){

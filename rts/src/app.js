@@ -7,10 +7,13 @@ import singleSpaReact from 'single-spa-react';
 const reactLifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: App,
+  rootComponent: Root,
   domElementGetter: () => domElementGetter('react-ts-app')
 });
 
+function Root (){
+  return <App introduce="Hello,Development!"></App>
+}
 export function bootstrap(props) {
   console.log('react-app is bootstrap')
   return reactLifecycles.bootstrap(props);

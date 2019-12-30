@@ -16,7 +16,6 @@ module.exports = {
   devtool: IS_PROD ? 'none' : 'source-map',
   entry: {
     'app': './index.js',
-    // 只需要单一版本的情况则把它放在共同的依赖关系中
   },
   output: {
     publicPath: '/',
@@ -112,6 +111,10 @@ module.exports = {
         "/rts": {
             target: "http://localhost:5006",
             pathRewrite: {"^/rts" : ""}
+        },
+        "/vts": {
+            target: "http://localhost:5007",
+            // pathRewrite: {"^/vts" : ""}
         },
     }
   }
