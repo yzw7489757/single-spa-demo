@@ -15,6 +15,7 @@ export const mount = (props)=> {
 }
 export const unmount = (props)=> {
   console.log('svelte-app is unMounted')
+  
   return svelteLifecycles.unmount(props);
 }
 

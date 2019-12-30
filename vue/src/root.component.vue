@@ -2,15 +2,9 @@
   <div>
     <nav class="app-nav">
       <ul class="nav-list">
-        <li>
-          <router-link to="/">Home</router-link>
-        </li>
-        <li>
-          <router-link to="/about">About</router-link>
-        </li>
-        <li>
-          <router-link to="/todoList">Todo List</router-link>
-        </li>
+          <router-link to="/" tag="li">Home</router-link>
+          <router-link to="/about" tag="li">About</router-link>
+          <router-link to="/todoList" tag="li">Todo List</router-link>
       </ul>
     </nav>
     <div class="app-box">

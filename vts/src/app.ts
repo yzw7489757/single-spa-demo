@@ -20,17 +20,17 @@ const vueLifecycles = singleSpaVue({
 });
 
 export const bootstrap = (props: any) => {
-  console.log("vue-app is bootstrap");
+  console.log("vts-app is bootstrap");
   return vueLifecycles.bootstrap(props);
 };
 
 export const mount = (props: any) => {
   appMountDOMGetter("rts");
-  console.log("vue-app is Mounted");
+  console.log("vts-app is Mounted");
   return vueLifecycles.mount(props);
 };
 export const unmount = (props: any) => {
-  console.log("vue-app is unMounted");
+  console.log("vts-app is unMounted");
   return vueLifecycles.unmount(props);
 };
 

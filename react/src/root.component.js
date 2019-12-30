@@ -29,15 +29,9 @@ export default class Root extends React.Component {
           <div className="app-container">
             <nav className="app-nav">
               <ul className="nav-list">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/todoList">Todo List</Link>
-                </li>
+                  <Link to="/"><li>Home</li></Link>
+                  <Link to="/about"><li>About</li></Link>
+                  <Link to="/todoList"> <li>Todo List </li></Link>
               </ul>
             </nav>
             

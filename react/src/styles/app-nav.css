@@ -11,12 +11,15 @@
   box-sizing: border-box;
   list-style: none;
 }
-.nav-list li,.nav-list a{
-  cursor: pointer;
+.nav-list li{
   padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color .3s ease-in;
+}
+
+.nav-list a{
   line-height: 45px;
   color: #fff;
-  transition: background-color .3s ease-in;
 }
 .nav-list li:hover{
   background-color: #1890ff;

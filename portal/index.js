@@ -5,6 +5,7 @@ import {
   navigateToUrl,
   getAppNames
 } from 'single-spa';
+
 import SystemJS from 'systemjs/dist/system'
 
 const apps = [
@@ -16,21 +17,26 @@ const apps = [
   { name: 'cra-ts', url: '/crats', entry: '//localhost:5007/app.js', customProps: {} },
   { name: 'vts', url: '/vts', entry: '//localhost:5008/vts/index.js', customProps: {} },
 ]
-
+/**
+ * RegisterApp
+ * @returns 
+ */
 async function registerAllApps() {
   await Promise.all(apps.map(registerApp))
-  // await setDefaultMountedApp('/react');
+  await setDefaultMountedApp('/react');
   start();
 }
 
 registerAllApps();
 
+/**
+ * set default App
+ * @param {*} path default app path
+ */
 function setDefaultMountedApp(path) {
   window.addEventListener(`single-spa:no-app-change`, (evt) => {
-    
     const activedApps = getMountedApps()
-    console.log('activedApps: ', activedApps);
-    if (activedApps.length === 0 ) {
+    if (activedApps.length === 0 && evt.target.location.pathname === '/') {
       navigateToUrl(path)
     }
   }, {
@@ -40,9 +46,8 @@ function setDefaultMountedApp(path) {
 
 /**
  * activeFn
- *
  * @param {*} prefix url prefix
- * @returns
+ * @returns Boolean
  */
 function pathPrefix(prefix) {
   if(prefix === true) {
@@ -55,8 +60,6 @@ function pathPrefix(prefix) {
 
 /**
  * register App
- *
- * @export
  * @param {*} name App Name
  * @param {*} url visit Url
  * @param {*} entry entry file

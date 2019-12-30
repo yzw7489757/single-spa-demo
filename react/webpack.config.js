@@ -16,7 +16,7 @@ module.exports = {
   },
   output: {
     // publicPath: '/dist/',
-    // chunkFilename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',

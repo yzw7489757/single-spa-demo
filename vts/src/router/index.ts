@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 Vue.use(VueRouter);
-const about = async () => await import("../views/About.vue");
 const routes = [
   {
     path: "/",
