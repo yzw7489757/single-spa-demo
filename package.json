@@ -60,7 +60,7 @@
     "single-spa-svelte": "^1.0.1",
     "single-spa-vue": "^1.5.4",
     "styled-components": "^4.4.1",
-    "svelte": "^3.16.5",
+    "svelte": "^3.49.0",
     "svelte-routing": "^1.4.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.3",
